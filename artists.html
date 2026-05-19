@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Artists</title>
+
+<style>
+
+body{
+    background:#121212;
+    color:white;
+    font-family:Arial;
+    padding:40px;
+}
+
+h1{
+    margin-bottom:30px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#181818;
+    border-radius:15px;
+    overflow:hidden;
+    text-align:center;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.05);
+}
+
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.content{
+    padding:20px;
+}
+
+.artist-btn{
+    margin-top:15px;
+    background:#1db954;
+    border:none;
+    color:white;
+    padding:10px 20px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+.artist-btn:hover{
+    background:#18a64c;
+}
+
+a{
+    text-decoration:none;
+}
+
+.home-btn{
+    background:#1db954;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:25px;
+    cursor:pointer;
+    margin-bottom:30px;
+    font-size:16px;
+}
+
+.home-btn:hover{
+    background:#18a64c;
+}
+
+footer{
+    margin-top:50px;
+    text-align:center;
+    color:gray;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+
+<a href="music.html">
+    <button class="home-btn">
+        ⬅ Back To Home
+    </button>
+</a>
+
+<h1>Top Artists</h1>
+
+<div class="grid">
+
+
+    <div class="card">
+
+        <img src="https://picsum.photos/400?artist1">
+
+        <div class="content">
+
+            <h2>Arijit Singh</h2>
+
+            <p>Followers: 25M</p>
+
+            <p>Genre: Romantic</p>
+
+            <a href="arijit.html">
+                <button class="artist-btn">
+                    View Profile
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <img src="https://picsum.photos/400?artist2">
+
+        <div class="content">
+
+            <h2>Atif Aslam</h2>
+
+            <p>Followers: 20M</p>
+
+            <p>Genre: Melody</p>
+
+            <a href="atif.html">
+                <button class="artist-btn">
+                    View Profile
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <img src="https://picsum.photos/400?artist3">
+
+        <div class="content">
+
+            <h2>Shreya Ghoshal</h2>
+
+            <p>Followers: 18M</p>
+
+            <p>Genre: Bollywood</p>
+
+            <a href="shreya.html">
+                <button class="artist-btn">
+                    View Profile
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+    © 2026 SoundSphere | All Rights Reserved | Created by Shah Soumya
+</footer>
+
+</body>
