@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - SoundSphere</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+body{
+    background:#121212;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.register-box{
+    background:#181818;
+    padding:40px;
+    border-radius:20px;
+    width:350px;
+    text-align:center;
+    box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+h1{
+    color:#1db954;
+    margin-bottom:25px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:12px 0;
+    border:none;
+    border-radius:10px;
+    background:#222;
+    color:white;
+    font-size:15px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    background:#1db954;
+    border:none;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#18a74a;
+}
+
+.footer{
+    margin-top:25px;
+    color:gray;
+    font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="register-box">
+
+    <h1>SoundSphere</h1>
+
+    <input type="text" placeholder="Enter Name">
+
+    <input type="email" placeholder="Enter Email">
+
+    <input type="password" placeholder="Enter Password">
+
+    <button onclick="goToWebsite()">
+        Register
+    </button>
+
+</div>
+
+
+<div class="footer">
+    © 2026 SoundSphere | All Rights Reserved | Created by Shah Soumya
+</div>
+
+
+<script>
+
+function goToWebsite(){
+
+    window.location.href="music.html";
+
+}
+
+</script>
+
+</body>
+</html>
