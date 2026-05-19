@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Amazora — Everything, Delivered</title>
+<link href="https://fonts.googleapis.com/css2?family=Amazon+Ember:wght@300;400;700&family=Ember+Display:wght@700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#131921;--navy2:#232f3e;--orange:#ff9900;--orange2:#f90;
+  --yellow:#febd69;--lightblue:#37a5d4;--red:#b12704;
+  --bg:#eaeded;--white:#fff;--text:#0f1111;--muted:#565959;
+  --border:#ddd;--green:#007600;
+}
+body{font-family:'Amazon Ember','Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+/* TOP NAV */
+.topbar{
+  background:var(--navy);color:#fff;
+  display:flex;align-items:center;gap:0;
+  padding:0;height:60px;position:sticky;top:0;z-index:100;
+}
+.tb-logo{
+  padding:8px 14px;display:flex;flex-direction:column;
+  align-items:center;border:2px solid transparent;border-radius:3px;
+  cursor:pointer;transition:border-color 0.15s;white-space:nowrap;
+}
+.tb-logo:hover{border-color:#fff}
+.tb-logo .logo-text{font-size:1.35rem;font-weight:700;letter-spacing:-0.5px;color:#fff}
+.tb-logo .logo-text span{color:var(--orange)}
+.tb-logo .logo-sub{font-size:0.62rem;color:var(--orange);letter-spacing:0.03em}
+.tb-deliver{
+  padding:8px 10px;border:2px solid transparent;border-radius:3px;
+  cursor:pointer;transition:border-color 0.15s;
+}
+.tb-deliver:hover{border-color:#fff}
+.tb-deliver .dl1{font-size:0.7rem;color:#ccc}
+.tb-deliver .dl2{font-size:0.85rem;font-weight:700}
+.tb-search{flex:1;display:flex;height:40px;margin:0 8px}
+.search-cat{
+  background:#f3f3f3;border:none;border-radius:4px 0 0 4px;
+  padding:0 10px;font-size:0.78rem;color:var(--text);cursor:pointer;
+  border-right:1px solid #ccc;
+}
+.search-input{
+  flex:1;border:none;padding:0 12px;font-size:0.9rem;outline:none;
+}
+.search-btn{
+  background:var(--orange);border:none;border-radius:0 4px 4px 0;
+  width:46px;cursor:pointer;font-size:1.1rem;transition:background 0.15s;
+}
+.search-btn:hover{background:#e88a00}
+.tb-lang{
+  padding:8px 10px;border:2px solid transparent;border-radius:3px;
+  cursor:pointer;font-size:0.85rem;transition:border-color 0.15s;white-space:nowrap;
+}
+.tb-lang:hover{border-color:#fff}
+.tb-account{
+  padding:8px 10px;border:2px solid transparent;border-radius:3px;
+  cursor:pointer;transition:border-color 0.15s;
+}
+.tb-account:hover{border-color:#fff}
+.tb-account .a1{font-size:0.7rem;color:#ccc}
+.tb-account .a2{font-size:0.85rem;font-weight:700}
+.tb-returns{
+  padding:8px 10px;border:2px solid transparent;border-radius:3px;
+  cursor:pointer;transition:border-color 0.15s;
+}
+.tb-returns:hover{border-color:#fff}
+.tb-returns .a1{font-size:0.7rem;color:#ccc}
+.tb-returns .a2{font-size:0.85rem;font-weight:700}
+.tb-cart{
+  padding:8px 10px;border:2px solid transparent;border-radius:3px;
+  cursor:pointer;display:flex;align-items:center;gap:6px;
+  transition:border-color 0.15s;position:relative;
+}
+.tb-cart:hover{border-color:#fff}
+.cart-icon{font-size:1.5rem}
+.cart-count{
+  position:absolute;top:6px;left:22px;
+  background:var(--orange);color:var(--navy);
+  font-size:0.75rem;font-weight:700;
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.cart-label{font-size:0.85rem;font-weight:700}
+
+/* SUBBAR */
+.subbar{
+  background:var(--navy2);color:#fff;
+  display:flex;align-items:center;gap:0;padding:0 8px;height:38px;
+  overflow-x:auto;white-space:nowrap;
+}
+.subbar::-webkit-scrollbar{display:none}
+.sb-item{
+  padding:8px 10px;font-size:0.85rem;border:2px solid transparent;
+  border-radius:3px;cursor:pointer;white-space:nowrap;transition:border-color 0.15s;
+}
+.sb-item:hover{border-color:#fff}
+.sb-item.bold{font-weight:700}
+
+/* HERO BANNER */
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#a0b4c8 0%,var(--bg) 100%)}
+.hero-slides{display:flex;width:100%;overflow:hidden}
+.slide{
+  min-width:100%;height:400px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  transition:opacity 0.5s;
+}
+.slide1{background:linear-gradient(135deg,#1a3c5e 0%,#2d6a9f 50%,#a8d4f0 100%)}
+.slide2{background:linear-gradient(135deg,#2d1b69 0%,#7c3aed 50%,#f0c4ff 100%)}
+.slide3{background:linear-gradient(135deg,#1a4a2e 0%,#2d7d46 50%,#a8f0c4 100%)}
+.slide-content{text-align:center;z-index:2;padding:2rem}
+.slide-content h1{font-size:2.2rem;font-weight:700;color:#fff;margin-bottom:0.75rem;text-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.slide-content p{font-size:1.05rem;color:rgba(255,255,255,0.85);margin-bottom:1.5rem}
+.slide-btn{
+  background:var(--orange);color:var(--text);padding:12px 32px;
+  border-radius:4px;font-size:0.95rem;font-weight:700;border:none;cursor:pointer;
+  transition:background 0.15s,transform 0.15s;display:inline-block;
+}
+.slide-btn:hover{background:#e88a00;transform:scale(1.02)}
+.hero-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(255,255,255,0.85);border:none;
+  width:42px;height:68px;font-size:1.4rem;cursor:pointer;
+  z-index:10;transition:background 0.15s;
+}
+.hero-arrow:hover{background:#fff}
+.hero-arrow.left{left:0;border-radius:0 4px 4px 0}
+.hero-arrow.right{right:0;border-radius:4px 0 0 4px}
+.hero-dots{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.5);cursor:pointer;transition:background 0.2s}
+.dot.active{background:#fff}
+
+/* MAIN CONTENT */
+.page{max-width:1500px;margin:0 auto;padding:1rem 1rem}
+
+/* DEAL BANNERS */
+.deal-banners{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:1.5rem}
+.deal-card{background:#fff;border-radius:4px;padding:1.25rem;cursor:pointer;transition:box-shadow 0.2s}
+.deal-card:hover{box-shadow:0 2px 12px rgba(0,0,0,0.15)}
+.deal-card h3{font-size:1rem;font-weight:700;margin-bottom:0.75rem}
+.deal-img{
+  height:160px;border-radius:4px;margin-bottom:0.75rem;
+  display:flex;align-items:center;justify-content:center;font-size:3rem;
+  overflow:hidden;
+}
+.deal-img.d1{background:linear-gradient(135deg,#f0e6d3,#d4a96a)}
+.deal-img.d2{background:linear-gradient(135deg,#e3f0ff,#6aaad4)}
+.deal-img.d3{background:linear-gradient(135deg,#f0e3ff,#a46ad4)}
+.deal-img.d4{background:linear-gradient(135deg,#e3ffe3,#6ad46a)}
+.deal-link{font-size:0.82rem;color:var(--lightblue)}
+.deal-link:hover{text-decoration:underline}
+
+/* PRODUCTS SECTION */
+.section{background:#fff;border-radius:4px;padding:1.25rem;margin-bottom:1.5rem}
+.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1rem}
+.section-header h2{font-size:1.3rem;font-weight:700}
+.see-more{font-size:0.85rem;color:var(--lightblue);cursor:pointer}
+.see-more:hover{text-decoration:underline;color:#c45500}
+.products-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.product-card{cursor:pointer;padding:8px;border-radius:4px;transition:all 0.2s;position:relative}
+.product-card:hover{box-shadow:0 2px 12px rgba(0,0,0,0.12)}
+.product-img{
+  width:100%;aspect-ratio:1;border-radius:4px;margin-bottom:8px;
+  display:flex;align-items:center;justify-content:center;font-size:2.8rem;
+  background:#f7f8f8;overflow:hidden;
+}
+.product-name{font-size:0.82rem;color:var(--text);line-height:1.4;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.stars{color:var(--orange);font-size:0.78rem;margin-bottom:2px}
+.review-count{font-size:0.72rem;color:var(--lightblue);cursor:pointer}
+.price-wrap{margin-top:4px}
+.price-small{font-size:0.7rem;color:var(--text)}
+.price-big{font-size:1.1rem;font-weight:700}
+.price-fraction{font-size:0.7rem;vertical-align:super}
+.was-price{font-size:0.78rem;color:var(--muted);text-decoration:line-through}
+.discount{font-size:0.78rem;color:var(--red);font-weight:700}
+.prime-badge{display:inline-flex;align-items:center;gap:3px;margin-top:3px}
+.prime-icon{background:var(--lightblue);color:#fff;font-size:0.58rem;font-weight:700;padding:1px 4px;border-radius:2px}
+.prime-text{font-size:0.72rem;color:var(--lightblue)}
+.add-btn{
+  width:100%;margin-top:8px;background:var(--orange);border:none;
+  border-radius:20px;padding:7px;font-size:0.8rem;font-weight:700;
+  cursor:pointer;transition:background 0.15s;font-family:inherit;
+  display:none;
+}
+.product-card:hover .add-btn{display:block}
+.add-btn:hover{background:#e88a00}
+.badge-new{
+  position:absolute;top:8px;left:8px;background:var(--red);color:#fff;
+  font-size:0.65rem;font-weight:700;padding:2px 6px;border-radius:2px;
+}
+.badge-deal{
+  position:absolute;top:8px;left:8px;background:#c45500;color:#fff;
+  font-size:0.65rem;font-weight:700;padding:2px 6px;border-radius:2px;
+}
+
+/* 3-COL PROMO */
+.promo-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:1.5rem}
+.promo-card{background:#fff;border-radius:4px;padding:1.25rem;cursor:pointer;transition:box-shadow 0.2s}
+.promo-card:hover{box-shadow:0 2px 12px rgba(0,0,0,0.15)}
+.promo-card h3{font-size:1rem;font-weight:700;margin-bottom:0.75rem}
+.promo-img{height:200px;border-radius:4px;margin-bottom:0.75rem;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.promo-img.p1{background:linear-gradient(135deg,#fff5e6,#ffd080)}
+.promo-img.p2{background:linear-gradient(135deg,#e6f0ff,#80b0ff)}
+.promo-img.p3{background:linear-gradient(135deg,#ffe6e6,#ff8080)}
+.promo-link{font-size:0.82rem;color:var(--lightblue)}
+
+/* CATEGORIES ROW */
+.cats-row{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:1.5rem}
+.cat-card{background:#fff;border-radius:4px;padding:1rem;text-align:center;cursor:pointer;transition:box-shadow 0.2s}
+.cat-card:hover{box-shadow:0 2px 12px rgba(0,0,0,0.15)}
+.cat-emoji{font-size:2.5rem;margin-bottom:8px}
+.cat-name{font-size:0.82rem;font-weight:700}
+
+/* FOOTER */
+footer{background:var(--navy2);color:#fff;margin-top:2rem}
+.footer-back{background:var(--navy);text-align:center;padding:14px;font-size:0.85rem;cursor:pointer;transition:background 0.15s}
+.footer-back:hover{background:#37475a}
+.footer-links{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding:2.5rem 5rem;max-width:1200px;margin:0 auto}
+.footer-col h4{font-size:0.9rem;font-weight:700;margin-bottom:1rem}
+.footer-col a{display:block;font-size:0.82rem;color:#ddd;margin-bottom:6px;transition:color 0.15s}
+.footer-col a:hover{color:#fff;text-decoration:underline}
+.footer-bottom{background:var(--navy);text-align:center;padding:1rem;font-size:0.78rem;color:#ccc;border-top:1px solid #3a4553}
+.footer-logo{font-size:1.2rem;font-weight:700;margin-bottom:4px}
+.footer-logo span{color:var(--orange)}
+
+/* CART NOTIFICATION */
+.cart-notif{
+  position:fixed;top:70px;right:20px;z-index:999;
+  background:var(--green);color:#fff;padding:10px 18px;border-radius:4px;
+  font-size:0.88rem;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  transform:translateY(-10px);opacity:0;transition:all 0.3s;pointer-events:none;
+}
+.cart-notif.show{transform:translateY(0);opacity:1}
+</style>
+</head>
+<body>
+
+<!-- CART NOTIFICATION -->
+<div class="cart-notif" id="cartNotif">✓ Added to Cart</div>
+
+<!-- TOP NAVBAR -->
+<header class="topbar">
+  <div class="tb-logo">
+    <div class="logo-text">Amaz<span>ora</span></div>
+    <div class="logo-sub">.in</div>
+  </div>
+  <div class="tb-deliver">
+    <div class="dl1">Deliver to</div>
+    <div class="dl2">📍 India</div>
+  </div>
+  <div class="tb-search">
+    <select class="search-cat">
+      <option>All</option>
+      <option>Electronics</option>
+      <option>Fashion</option>
+      <option>Books</option>
+      <option>Home</option>
+      <option>Sports</option>
+    </select>
+    <input class="search-input" type="text" placeholder="Search Amazora.in" id="searchInput"/>
+    <button class="search-btn" onclick="doSearch()">🔍</button>
+  </div>
+  <div class="tb-lang">🌐 EN</div>
+  <div class="tb-account">
+    <div class="a1">Hello, sign in</div>
+    <div class="a2">Account &amp; Lists ▾</div>
+  </div>
+  <div class="tb-returns">
+    <div class="a1">Returns</div>
+    <div class="a2">&amp; Orders</div>
+  </div>
+  <div class="tb-cart" onclick="openCart()">
+    <span class="cart-icon">🛒</span>
+    <div class="cart-count" id="cartCount">0</div>
+    <span class="cart-label">Cart</span>
+  </div>
+</header>
+
+<!-- SUBBAR -->
+<nav class="subbar">
+  <div class="sb-item bold">☰ All</div>
+  <div class="sb-item">Today's Deals</div>
+  <div class="sb-item">Customer Service</div>
+  <div class="sb-item">Registry</div>
+  <div class="sb-item">Gift Cards</div>
+  <div class="sb-item">Sell</div>
+  <div class="sb-item" style="color:var(--yellow);font-weight:700">🔥 New Arrivals</div>
+  <div class="sb-item">Electronics</div>
+  <div class="sb-item">Fashion</div>
+  <div class="sb-item">Home &amp; Kitchen</div>
+  <div class="sb-item">Books</div>
+  <div class="sb-item">Sports</div>
+  <div class="sb-item">Beauty</div>
+  <div class="sb-item">Toys</div>
+  <div class="sb-item">Grocery</div>
+  <div class="sb-item">Prime Video</div>
+</nav>
+
+<!-- HERO BANNER -->
+<div class="hero">
+  <div class="hero-slides" id="heroSlides">
+    <div class="slide slide1">
+      <div class="slide-content">
+        <h1>Great Indian Sale</h1>
+        <p>Up to 80% off on millions of products. Limited time deals!</p>
+        <button class="slide-btn">Shop Now</button>
+      </div>
+    </div>
+    <div class="slide slide2">
+      <div class="slide-content">
+        <h1>Electronics Fest</h1>
+        <p>Top brands, lowest prices. Laptops, phones, TVs &amp; more.</p>
+        <button class="slide-btn">Explore Deals</button>
+      </div>
+    </div>
+    <div class="slide slide3">
+      <div class="slide-content">
+        <h1>Fashion Week</h1>
+        <p>Trendy styles for every occasion. Free delivery on orders above ₹499.</p>
+        <button class="slide-btn">Shop Fashion</button>
+      </div>
+    </div>
+  </div>
+  <button class="hero-arrow left" onclick="slide(-1)">&#10094;</button>
+  <button class="hero-arrow right" onclick="slide(1)">&#10095;</button>
+  <div class="hero-dots">
+    <div class="dot active" onclick="goSlide(0)"></div>
+    <div class="dot" onclick="goSlide(1)"></div>
+    <div class="dot" onclick="goSlide(2)"></div>
+  </div>
+</div>
+
+<!-- PAGE CONTENT -->
+<div class="page">
+
+  <!-- DEAL BANNERS -->
+  <div class="deal-banners">
+    <div class="deal-card">
+      <h3>Pick up where you left off</h3>
+      <div class="deal-img d1">👟</div>
+      <a class="deal-link">See more in men's shoes</a>
+    </div>
+    <div class="deal-card">
+      <h3>Top deals in Electronics</h3>
+      <div class="deal-img d2">📱</div>
+      <a class="deal-link">See all deals</a>
+    </div>
+    <div class="deal-card">
+      <h3>Home renovation needs</h3>
+      <div class="deal-img d3">🛋️</div>
+      <a class="deal-link">Shop home décor</a>
+    </div>
+    <div class="deal-card">
+      <h3>Explore Gaming</h3>
+      <div class="deal-img d4">🎮</div>
+      <a class="deal-link">Shop video games</a>
+    </div>
+  </div>
+
+  <!-- BEST SELLERS -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Best Sellers — Electronics</h2>
+      <a class="see-more">See more</a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card" onclick="addToCart(this)">
+        <div class="badge-deal">Deal</div>
+        <div class="product-img">📱</div>
+        <div class="product-name">Redmi Note 13 Pro 5G (12GB RAM, 256GB) — Midnight Black</div>
+        <div class="stars">★★★★☆</div>
+        <div class="review-count">24,891 reviews</div>
+        <div class="price-wrap">
+          <div class="price-small">M.R.P.: <span class="was-price">₹32,999</span></div>
+          <div><span class="price-big"><span class="price-fraction">₹</span>21,999</span></div>
+          <div class="discount">Save ₹11,000 (33%)</div>
+        </div>
+        <div class="prime-badge"><span class="prime-icon">prime</span><span class="prime-text">FREE Delivery</span></div>
+        <button class="add-btn">Add to cart</button>
+      </div>
+      <div class="product-card" onclick="addToCart(this)">
+        <div class="badge-new">New</div>
+        <div class="product-img">💻</div>
+        <div class="product-name">Lenovo IdeaPad Slim 3 15.6" Laptop Intel i5 16GB 512GB SSD Win 11</div>
+        <div class="stars">★★★★★</div>
+        <div class="review-count">8,452 reviews</div>
+        <div class="price-wrap">
+          <div class="price-small">M.R.P.: <span class="was-price">₹65,990</span></div>
+          <div><span class="price-big"><span class="price-fraction">₹</span>46,490</span></div>
+          <div class="discount">Save ₹19,500 (30%)</div>
+        </div>
+        <div class="prime-badge"><span class="prime-icon">prime</span><span class="prime-text">FREE Delivery</span></div>
+        <button class="add-btn">Add to cart</button>
+      </div>
+      <div class="product-card" onclick="addToCart(this)">
+        <div class="product-img">🎧</div>
+        <div class="product-name">boAt Rockerz 550 Wireless Bluetooth On-Ear Headphones with 20H Playtime</div>
+        <div class="stars">★★★★☆</div>
+        <div class="review-count">1,12,340 reviews</div>
+        <div class="price-wrap">
+          <div class="price-small">M.R.P.: <span class="was-price">₹3,999</span></div>
+          <div><span class="price-big"><span class="price-fraction">₹</span>1,299</span></div>
+          <div class="discount">Save ₹2,700 (68%)</div>
+        </div>
+        <div class="prime-badge"><span class="prime-icon">prime</span><span class="prime-text">FREE Delivery</span></div>
+        <button class="add-btn">Add to cart</button>
+      </div>
+      <div class="product-card" onclick="addToCart(this)">
+        <div class="product-img">📺</div>
+        <div class="product-name">Mi 43" Full HD Smart LED TV with Dolby Audio &amp; DTS-HD</div>
+        <div class="stars">★★★★☆</div>
+        <div class="review-count">52,100 reviews</div>
+        <div class="price-wrap">
+          <div class="price-small">M.R.P.: <span class="was-price">₹35,999</span></div>
+          <div><span class="price-big"><span class="price-fraction">₹</span>24,999</span></div>
+          <div class="discount">Save ₹11,000 (31%)</div>
+        </div>
+        <div class="prime-badge"><span class="prime-icon">prime</span><span class="prime-text">FREE Delivery</span></div>
+        <button class="add-btn">Add to cart</button>
+      </div>
+      <div class="product-card" onclick="addToCart(this)">
+        <div class="badge-deal">Deal</div>
+        <div class="product-img">⌚</div>
+        <div class="product-name">Amazfit GTS 4 Mini Smart Watch with 120+ Sports Modes Blood Oxygen</div>
+        <div class="stars">★★★★☆</div>
+        <div class="review-count">9,870 reviews</div>
+        <div class="price-wrap">
+          <div class="price-small">M.R.P.: <span class="was-price">₹9,999</span></div>
+          <div><span class="price-big"><span class="price-fraction">₹</span>5,999</span></div>
+          <div class="discount">Save ₹4,000 (40%)</div>
+        </div>
+        <div class="prime-badge"><span class="prime-icon">prime</span><span class="prime-text">FREE Delivery</span></div>
+        <button class="add-btn">Add to cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASHION SECTION -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Trending in Fashion</h2>
+      <a class="see-more">See more</a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card" onclick="addToCart(this)">
+        <div class="product-img" style="background:#fdf0f0">👕</div>
+        <div class="product-name">Allen Solly Men's Slim Fit Polo T-Shirt — 100% Cotton</div>
+        <div class="stars">★★★★☆</div>
+        <div class="review-count">34,211 reviews</div>
+        <div class="price-wrap">
+          <div><span class="price-big"><span class="price-fraction">₹</span>699</span></div>
+          <div class="discount">52% off</div>
+        </div>
+        <div class="prime-badge"><span class="prime-icon">prime</span><span class="prime-text">FREE Delivery</span></div>
+        <button class="add-btn">Add to cart</button>
+      </div>
+      <div class="product-card" onclick="addToCart(this)">
+        <div class="product-img" style="background:#f0f4ff">👗</div>
+        <div class="product-name">ONLY Women's Fit &amp; Flare Midi Dress — Floral Print</div>
+        <div class="stars">★★★★★</div>
+        <div class="review-count">7,654 reviews</div>
+        <div class="price-wrap">
+          <div class="price-small">M.R.P.: <span class="was-price">₹2,499</span></div>
+          <div><span class="price-big"><span class="price-fraction">₹</span>999</span></div>
+          <div class="discount">60% off</div>
+        </div>
+        <div class="prime-badge"><span class="prime-icon">prime</span><span class="prime-text">FREE Delivery</span></div>
+        <button class="add-btn">Add to cart</button>
+      </div>
+      <div class="product-card" onclick="addToCart(this)">
+        <div class="product-img" style="background:#f5f0e8">👟</div>
+        <div class="product-name">Puma Men's Anzarun Lite Running Shoes — Lightweight &amp; Breathable</div>
+        <div class="stars">★★★★☆</div>
+        <div class="review-count">18,921 reviews</div>
+        <div class="price-wrap">
+          <div class="price-small">M.R.P.: <span class="was-price">₹4,299</span></div>
+          <div><span class="price-big"><span class="price-fraction">₹</span>2,199</span></div>
+          <div class="discount">49% off</div>
+        </div>
+        <div class="prime-badge"><span class="prime-icon">prime</span><span class="prime-text">FREE Delivery</span></div>
+        <button class="add-btn">Add to cart</button>
+      </div>
+      <div class="product-card" onclick="addToCart(this)">
+        <div class="badge-new">New</div>
+        <div class="product-img" style="background:#f0ffe8">🕶️</div>
+        <div class="product-name">Ray-Ban RB3025 Aviator Classic Polarized Sunglasses Gold/Brown</div>
+        <div class="stars">★★★★★</div>
+        <div class="review-count">4,312 reviews</div>
+        <div class="price-wrap">
+          <div class="price-small">M.R.P.: <span class="was-price">₹12,990</span></div>
+          <div><span class="price-big"><span class="price-fraction">₹</span>8,490</span></div>
+          <div class="discount">35% off</div>
+        </div>
+        <div class="prime-badge"><span class="prime-icon">prime</span><span class="prime-text">FREE Delivery</span></div>
+        <button class="add-btn">Add to cart</button>
+      </div>
+      <div class="product-card" onclick="addToCart(this)">
+        <div class="product-img" style="background:#fff0f5">👜</div>
+        <div class="product-name">Lavie Women's Satchel Handbag Large Capacity Tote Bag — Black</div>
+        <div class="stars">★★★★☆</div>
+        <div class="review-count">11,099 reviews</div>
+        <div class="price-wrap">
+          <div class="price-small">M.R.P.: <span class="was-price">₹3,295</span></div>
+          <div><span class="price-big"><span class="price-fraction">₹</span>1,599</span></div>
+          <div class="discount">51% off</div>
+        </div>
+        <div class="prime-badge"><span class="prime-icon">prime</span><span class="prime-text">FREE Delivery</span></div>
+        <button class="add-btn">Add to cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3-COL PROMO -->
+  <div class="promo-3">
+    <div class="promo-card">
+      <h3>Kitchen Essentials</h3>
+      <div class="promo-img p1">🍳</div>
+      <a class="promo-link">Shop now</a>
+    </div>
+    <div class="promo-card">
+      <h3>Refresh Your Space</h3>
+      <div class="promo-img p2">🪴</div>
+      <a class="promo-link">Shop home décor</a>
+    </div>
+    <div class="promo-card">
+      <h3>Health &amp; Wellness</h3>
+      <div class="promo-img p3">💊</div>
+      <a class="promo-link">Shop health products</a>
+    </div>
+  </div>
+
+  <!-- HOME & KITCHEN -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Home &amp; Kitchen Picks</h2>
+      <a class="see-more">See more</a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card" onclick="addToCart(this)">
+        <div class="product-img" style="background:#fff8e6">☕</div>
+        <div class="product-name">Philips HD7431/20 Coffee Maker Machine with Keep Warm Plate 1.2L</div>
+        <div class="stars">★★★★☆</div>
+        <div class="review-count">29,876 reviews</div>
+        <div class="price-wrap">
+          <div class="price-small">M.R.P.: <span class="was-price">₹3,995</span></div>
+          <div><span class="price-big"><span class="price-fraction">₹</span>2,299</span></div>
+          <div class="discount">43% off</div>
+        </div>
+        <div class="prime-badge"><span class="prime-icon">prime</span><span class="prime-text">FREE Delivery</span></div>
+        <button class="add-btn">Add to cart</button>
+      </div>
+      <div class="product-card" onclick="addToCart(this)">
+        <div class="badge-deal">Deal</div>
+        <div class="product-img" style="background:#edf7ee">🍽️</div>
+        <div class="product-name">Milton Thermosteel Flip Lid Flask 750ml — Keeps Hot 24 Hours</div>
+        <div class="stars">★★★★★</div>
+        <div class="review-count">58,432 reviews</div>
+        <div class="price-wrap">
+          <div><span class="price-big"><span class="price-fraction">₹</span>649</span></div>
+          <div class="discount">55% off</div>
+        </div>
+        <div class="prime-badge"><span class="prime-icon">prime</span><span class="prime-text">FREE Delivery</span></div>
+        <button class="add-btn">Add to cart</button>
+      </div>
+      <div class="product-card" onclick="addToCart(this)">
+        <div class="product-img" style="background:#f0f0ff">🛏️</div>
+        <div class="product-name">AmazonBasics Microfibre Double Bedsheet with 2 Pillow Covers — Grey</div>
+        <div class="stars">★★★★☆</div>
+        <div class="review-count">72,100 reviews</div>
+        <div class="price-wrap">
+          <div class="price-small">M.R.P.: <span class="was-price">₹1,299</span></div>
+          <div><span class="price-big"><span class="price-fraction">₹</span>499</span></div>
+          <div class="discount">62% off</div>
+        </div>
+        <div class="prime-badge"><span class="prime-icon">prime</span><span class="prime-text">FREE Delivery</span></div>
+        <button class="add-btn">Add to cart</button>
+      </div>
+      <div class="product-card" onclick="addToCart(this)">
+        <div class="product-img" style="background:#fff5f0">🪴</div>
+        <div class="product-name">Ugaoo Money Plant in Ceramic Pot — Easy Care Indoor Plant Gift</div>
+        <div class="stars">★★★★★</div>
+        <div class="review-count">14,532 reviews</div>
+        <div class="price-wrap">
+          <div><span class="price-big"><span class="price-fraction">₹</span>349</span></div>
+          <div class="discount">30% off</div>
+        </div>
+        <div class="prime-badge"><span class="prime-icon">prime</span><span class="prime-text">FREE Delivery</span></div>
+        <button class="add-btn">Add to cart</button>
+      </div>
+      <div class="product-card" onclick="addToCart(this)">
+        <div class="product-img" style="background:#f8f0ff">🧹</div>
+        <div class="product-name">Dyson V12 Detect Slim Cordless Vacuum Cleaner with Laser Detection</div>
+        <div class="stars">★★★★☆</div>
+        <div class="review-count">3,211 reviews</div>
+        <div class="price-wrap">
+          <div class="price-small">M.R.P.: <span class="was-price">₹62,900</span></div>
+          <div><span class="price-big"><span class="price-fraction">₹</span>44,900</span></div>
+          <div class="discount">29% off</div>
+        </div>
+        <div class="prime-badge"><span class="prime-icon">prime</span><span class="prime-text">FREE Delivery</span></div>
+        <button class="add-btn">Add to cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <div class="cats-row">
+    <div class="cat-card"><div class="cat-emoji">📱</div><div class="cat-name">Electronics</div></div>
+    <div class="cat-card"><div class="cat-emoji">👗</div><div class="cat-name">Fashion</div></div>
+    <div class="cat-card"><div class="cat-emoji">🏠</div><div class="cat-name">Home & Kitchen</div></div>
+    <div class="cat-card"><div class="cat-emoji">📚</div><div class="cat-name">Books</div></div>
+    <div class="cat-card"><div class="cat-emoji">⚽</div><div class="cat-name">Sports</div></div>
+    <div class="cat-card"><div class="cat-emoji">💄</div><div class="cat-name">Beauty</div></div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-back" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top</div>
+  <div class="footer-links">
+    <div class="footer-col">
+      <h4>Get to Know Us</h4>
+      <a href="#">About Amazora</a>
+      <a href="#">Careers</a>
+      <a href="#">Press Releases</a>
+      <a href="#">Amazora Science</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect with Us</h4>
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+      <a href="#">YouTube</a>
+    </div>
+    <div class="footer-col">
+      <h4>Make Money with Us</h4>
+      <a href="#">Sell on Amazora</a>
+      <a href="#">Sell under Private Brands</a>
+      <a href="#">Associate Programme</a>
+      <a href="#">Advertise Your Products</a>
+    </div>
+    <div class="footer-col">
+      <h4>Let Us Help You</h4>
+      <a href="#">COVID-19 and Amazora</a>
+      <a href="#">Your Account</a>
+      <a href="#">Returns Centre</a>
+      <a href="#">100% Purchase Protection</a>
+      <a href="#">Help</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-logo">Amaz<span>ora</span></div>
+    <div>© 2026 Amazora.in — Everything, Delivered. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+let cartCount = 0;
+let slideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+let autoSlide = setInterval(()=>slide(1), 4000);
+
+function slide(dir){
+  clearInterval(autoSlide);
+  slideIndex = (slideIndex + dir + slides.length) % slides.length;
+  updateSlide();
+  autoSlide = setInterval(()=>slide(1), 4000);
+}
+
+function goSlide(i){
+  clearInterval(autoSlide);
+  slideIndex = i;
+  updateSlide();
+  autoSlide = setInterval(()=>slide(1), 4000);
+}
+
+function updateSlide(){
+  const wrap = document.getElementById('heroSlides');
+  wrap.style.transform = `translateX(-${slideIndex * 100}%)`;
+  wrap.style.transition = 'transform 0.5s ease';
+  dots.forEach((d,i)=>d.classList.toggle('active', i===slideIndex));
+}
+
+document.getElementById('heroSlides').style.display = 'flex';
+document.getElementById('heroSlides').style.transition = 'transform 0.5s ease';
+
+function addToCart(card){
+  if(event.target.classList.contains('add-btn') || event.target === card){
+    cartCount++;
+    document.getElementById('cartCount').textContent = cartCount;
+    const notif = document.getElementById('cartNotif');
+    notif.classList.add('show');
+    setTimeout(()=>notif.classList.remove('show'), 2000);
+  }
+}
+
+function openCart(){
+  alert(`You have ${cartCount} item(s) in your cart!`);
+}
+
+function doSearch(){
+  const q = document.getElementById('searchInput').value.trim();
+  if(q) alert(`Searching for: "${q}"`);
+}
+
+document.getElementById('searchInput').addEventListener('keydown', e=>{
+  if(e.key==='Enter') doSearch();
+});
+</script>
+</body>
+</html>

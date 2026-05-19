@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grid Layout Wireframe</title>
+
+    <style>
+        .container{
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr;
+            grid-template-rows: 80px 300px 80px;
+            gap: 10px;
+            height: 100vh;
+        }
+
+        .box{
+            border: 2px solid black;
+            text-align: center;
+            padding: 20px;
+            font-size: 20px;
+        }
+
+        .header{
+            grid-column: 1 / 4;
+            background-color: lightblue;
+        }
+
+        .menu{
+            background-color: lightyellow;
+        }
+
+        .content{
+            background-color: lightgreen;
+        }
+
+        .sidebar{
+            background-color: lightpink;
+        }
+
+        .footer{
+            grid-column: 1 / 4;
+            background-color: lightgray;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="box header">Header</div>
+
+        <div class="box menu">Menu</div>
+
+        <div class="box content">Content</div>
+
+        <div class="box sidebar">Sidebar</div>
+
+        <div class="box footer">Footer</div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>Ball Animation</title>
+
+    <style>
+        .container{
+            width: 700px;
+            height: 200px;
+            border: 2px solid black;
+            position: relative;
+        }
+
+        .ball{
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, yellow, orange, red);
+            border-radius: 50%;
+            position: absolute;
+            top: 50px;
+
+            animation: moveball 4s infinite;
+        }
+
+        .wall{
+            width: 20px;
+            height: 200px;
+            background-color: gray;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+        }
+
+        @keyframes moveball{
+            0%{
+                left: 0px;
+            }
+
+            50%{
+                left: 580px;   
+            }
+
+            100%{
+                left: 0px;    
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h2>Moving Ball Animation</h2>
+
+    <div class="container"></div>
+
+    <div class="ball"></div>
+
+    <div class="wall"></div>
+
+</body>
+</html>

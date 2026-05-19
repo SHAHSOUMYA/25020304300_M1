@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Settings</title>
+
+<style>
+
+body{
+    background:#121212;
+    color:white;
+    font-family:Arial;
+    padding:40px;
+}
+
+h1{
+    margin-bottom:30px;
+}
+
+.setting-box{
+    background:#181818;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:15px;
+    cursor:pointer;
+}
+
+.setting-title{
+    font-size:22px;
+}
+
+.option-box{
+    display:none;
+    margin-top:15px;
+    color:#ccc;
+}
+
+.option-box p{
+    margin:10px 0;
+}
+
+.toggle-btn{
+    background:#1db954;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:20px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+.back-btn{
+    margin-top:30px;
+    background:#1db954;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>⚙ Settings</h1>
+
+
+
+
+<div class="setting-box" onclick="openSetting('audio')">
+
+    <div class="setting-title">
+        🔊 Audio Settings
+    </div>
+
+    <div class="option-box" id="audio">
+
+        <p>Volume: 80%</p>
+
+        <p>Bass Boost: ON</p>
+
+        <p>Sound Quality: High</p>
+
+    </div>
+
+</div>
+
+
+
+<!
+
+<div class="setting-box" onclick="openSetting('theme')">
+
+    <div class="setting-title">
+        🌙 Theme Settings
+    </div>
+
+    <div class="option-box" id="theme">
+
+        <p>Dark Mode: ON</p>
+
+        <p>Accent Color: Green</p>
+
+        <button class="toggle-btn">
+            Change Theme
+        </button>
+
+    </div>
+
+</div>
+
+
+
+
+
+<div class="setting-box" onclick="openSetting('notification')">
+
+    <div class="setting-title">
+        🔔 Notifications
+    </div>
+
+    <div class="option-box" id="notification">
+
+        <p>New Songs Alerts: ON</p>
+
+        <p>Artist Updates: ON</p>
+
+        <p>Playlist Updates: OFF</p>
+
+        <button class="toggle-btn">
+            Manage Notifications
+        </button>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="setting-box" onclick="openSetting('account')">
+
+    <div class="setting-title">
+        👤 Account Settings
+    </div>
+
+    <div class="option-box" id="account">
+
+        <p>Name: Shah Soumya</p>
+
+        <p>Plan: Free User</p>
+
+        <p>Email: demo@gmail.com</p>
+
+    </div>
+
+</div>
+
+
+
+<a href="music.html">
+
+    <button class="back-btn">
+        ⬅ Back to Home
+    </button>
+
+</a>
+
+
+<script>
+
+function openSetting(id){
+
+    let box =
+    document.getElementById(id);
+
+    if(box.style.display=="block"){
+
+        box.style.display="none";
+
+    }else{
+
+        box.style.display="block";
+
+    }
+
+}
+
+</script>
+
+
+<footer>
+    © 2026 SoundSphere | All Rights Reserved | Created by Shah Soumya
+</footer>
+</body>
+</html>
